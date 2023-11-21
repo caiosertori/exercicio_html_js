@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário com Validação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    #mensagem {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="meuFormulario">
+    <label for="campoA">Campo A:</label>
+    <input type="number" id="campoA" name="campoA" required>
+
+    <label for="campoB">Campo B:</label>
+    <input type="number" id="campoB" name="campoB" required>
+
+    <button type="button" onclick="validarFormulario()">Enviar</button>
+  </form>
+
+  <div id="mensagem"></div>
+
+  <script>
+    function validarFormulario() {
+      // Obter os valores dos campos
+      var campoA = document.getElementById("campoA").value;
+      var campoB = document.getElementById("campoB").value;
+
+      // Validar se B é maior que A
+      if (campoB > campoA) {
+        exibirMensagem(true, "Formulário válido!");
+      } else {
+        exibirMensagem(false, "Número B deve ser maior que o número A.");
+      }
+    }
+
+    function exibirMensagem(valido, mensagem) {
+      var mensagemDiv = document.getElementById("mensagem");
+      mensagemDiv.innerHTML = mensagem;
+
+      // Adicionar classe de estilo com base na validação
+      mensagemDiv.className = valido ? "mensagem-positiva" : "mensagem-negativa";
+    }
+  </script>
+
+</body>
+</html>
